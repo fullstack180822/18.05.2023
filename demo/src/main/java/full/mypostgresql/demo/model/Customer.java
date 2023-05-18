@@ -21,6 +21,9 @@ public class Customer {
     @Getter@Setter
     protected CustomerStatus status;
 
+    public Customer() {
+    }
+
     public Customer(Integer id, String firstName, String lastName, String email, CustomerStatus status) {
         this.id = id;
         this.firstName = firstName;

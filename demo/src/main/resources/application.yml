@@ -1,1 +1,3 @@
 maxvip: 5
+tvmaze:
+  url: https://api.tvmaze.com

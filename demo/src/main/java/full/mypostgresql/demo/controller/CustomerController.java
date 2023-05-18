@@ -3,7 +3,9 @@ package full.mypostgresql.demo.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import full.mypostgresql.demo.model.Customer;
+import full.mypostgresql.demo.model.TVMazeShowResponse;
 import full.mypostgresql.demo.service.CustomerService;
+import full.mypostgresql.demo.service.UserServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +23,8 @@ public class CustomerController {
     @Autowired
     ObjectMapper objectMapper;
 
-//    @Autowired
-//    private UserServiceClient apiClient;
+    @Autowired
+    private UserServiceClient apiClient;
 
     @GetMapping
     public List<Customer> get()
@@ -81,11 +83,11 @@ public class CustomerController {
         return customerService.getAllIds();
     }
 
-    //@GetMapping(value = "/shows/{id}")
-    //public TVMazeShowResponse getIds(@PathVariable Integer id)
-//    {
-//        return apiClient.getShow(id);
-//    }
+    @GetMapping(value = "/shows/{id}")
+    public TVMazeShowResponse getIds(@PathVariable Integer id)
+    {
+        return apiClient.getShow(id);
+    }
 
 
 }
