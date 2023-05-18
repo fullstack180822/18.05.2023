@@ -1,5 +1,7 @@
 package full.mypostgresql.demo;
 
+import full.mypostgresql.demo.model.Customer;
+import full.mypostgresql.demo.model.CustomerStatus;
 import full.mypostgresql.demo.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +18,7 @@ public class DemoApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(JdbcTemplate jdbcTemplate) {
+	CommandLineRunner commandLineRunner(JdbcTemplate jdbcTemplate, CustomerRepository customerRepository) {
 		return args -> {
 			jdbcTemplate.execute(
 					"DROP TABLE IF EXISTS customer_order cascade;\n" +
@@ -34,8 +36,8 @@ public class DemoApplication {
 							"    price DECIMAL(100,2) NOT NULL default 0,\n" +
 							"    FOREIGN KEY (customer_id) REFERENCES customer(id));");
 
-			//customerRepository.createCustomer(new Customer(0, "tomer", "avivi",
-			//		"tomeravivi@gmail.com", CustomerStatus.REGULAR));
+			customerRepository.createCustomer(new Customer(0, "tomer", "avivi",
+					"tomeravivi@gmail.com", CustomerStatus.REGULAR));
 		};
 	}
 

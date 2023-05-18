@@ -1,11 +1,10 @@
-package full.mypostgresql.demo.repository;
+package full.mypostgresql.demo.service;
 
 import full.mypostgresql.demo.model.Customer;
-import full.mypostgresql.demo.model.CustomerStatus;
 
 import java.util.List;
 
-public interface ICustomerRepository {
+public interface ICustomerService {
 
     String createCustomer(Customer customer);
 
@@ -18,6 +17,4 @@ public interface ICustomerRepository {
     Customer getCustomerById(Integer id);
 
     List<Integer> getAllIds();
-
-    List<Customer> getCustomersByStatus(CustomerStatus status);
 }
