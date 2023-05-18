@@ -33,6 +33,9 @@ public class CustomerController {
     @GetMapping(value ="/{id}")
     public ResponseEntity getById(@PathVariable Integer id)
     {
+        // run with id which does not exist -- 404
+        // run with id which exists -- 200
+        // change the query to a bad grammer SELECTTTTT -- 500
         try {
             Customer result = customerService.getCustomerById(id);
             if (result != null) {
